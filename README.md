@@ -3,7 +3,9 @@ WebView2Demo for vb6
 
 ## 步骤：
 1）先执行RegisterRC6inPlace.vbs，注册rc6.dll
+
 2）双击运行MicrosoftEdgeWebview2Setup.exe安装webview2环境。
+
 
 
 ## 实现原理：
