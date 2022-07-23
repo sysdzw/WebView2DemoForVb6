@@ -26,12 +26,6 @@ Begin VB.Form fMain
       Top             =   120
       Width           =   2055
    End
-   Begin VB.Timer Timer1 
-      Enabled         =   0   'False
-      Interval        =   1
-      Left            =   9120
-      Top             =   960
-   End
    Begin VB.CommandButton Command1 
       Caption         =   "H5Ãÿ–ß≤‚ ‘"
       Height          =   330
@@ -207,11 +201,6 @@ Private Sub Text2_KeyPress(KeyAscii As Integer)
     If KeyAscii = 13 Then WV.Navigate Text2.Text
 End Sub
 
-Private Sub Timer1_Timer()
-Timer1.Enabled = False
-WV.Navigate Timer1.Tag
-End Sub
-
 '*** the above two EventHandlers (of the hosting VB-PicBox-Container-Ctl) are basically all what's needed "GUI-Binding-wise"
 
 '*** the rest of the EventHandlers below, are raised by the WebView-instance itself
@@ -253,16 +242,9 @@ Private Sub WV_LostFocus(ByVal Reason As eWebView2FocusReason)
 End Sub
 
 Private Sub WV_NewWindowRequested(ByVal IsUserInitiated As Boolean, IsHandled As Boolean, ByVal URI As String, NewWindowFeatures As RC6.cCollection)
-'MsgBox URI
-IsUserInitiated = False
-IsHandled = True
-'MsgBox IsHandled
-'WV.Navigate URI
-'IsHandled = True
-Debug.Print Now; " " & URI
-
-Timer1.Tag = URI
-Timer1.Enabled = True
+    'IsUserInitiated = False
+    IsHandled = True
+    WV.Navigate URI, 0
 End Sub
 
 Private Sub WV_UserContextMenu(ByVal ScreenX As Long, ByVal SreenY As Long)
